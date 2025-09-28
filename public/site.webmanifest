@@ -1,0 +1,21 @@
+{
+  "name": "John Developer Portfolio",
+  "short_name": "Portfolio",
+  "description": "Professional full stack developer and UI/UX designer portfolio",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+  "theme_color": "#3B82F6",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

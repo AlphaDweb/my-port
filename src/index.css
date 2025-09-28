@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System - Modern & Vibrant */
+
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    /* Card system */
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    /* Interactive elements */
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    /* Brand colors - Deep purple to cyan gradient system */
+    --primary: 262 83% 58%; /* Vibrant purple */
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 280 100% 70%; /* Lighter purple for glows */
+
+    --secondary: 190 95% 39%; /* Vibrant cyan */
+    --secondary-foreground: 240 10% 3.9%;
+    --secondary-glow: 180 100% 50%; /* Bright cyan */
+
+    /* UI elements */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 262 83% 58%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 262 83% 58%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-hero: linear-gradient(135deg, hsl(262 83% 58%), hsl(190 95% 39%));
+    --gradient-card: linear-gradient(145deg, hsl(240 10% 3.9%), hsl(240 3.7% 15.9%));
+    --gradient-glow: linear-gradient(135deg, hsl(280 100% 70% / 0.3), hsl(180 100% 50% / 0.3));
+    
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(var(--primary-glow) / 0.4);
+    --shadow-card: 0 8px 32px hsl(240 10% 3.9% / 0.4);
+    --shadow-elegant: 0 10px 30px -10px hsl(var(--primary) / 0.3);
+
+    /* Animation variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground scroll-smooth;
+  }
+}
+
+@layer components {
+  /* Portfolio Button Variants */
+  .btn-hero {
+    @apply inline-flex items-center justify-center rounded-2xl px-8 py-4 font-semibold text-lg;
+    @apply bg-gradient-to-r from-primary to-secondary text-primary-foreground;
+    @apply shadow-elegant hover:shadow-glow transform hover:scale-105;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-2xl px-8 py-4 font-semibold text-lg;
+    @apply bg-transparent border-2 border-primary text-primary;
+    @apply hover:bg-primary hover:text-primary-foreground;
+    @apply transform hover:scale-105 transition-all duration-300 ease-out;
+  }
+
+  /* Project Card Styles */
+  .project-card {
+    @apply relative overflow-hidden rounded-3xl;
+    @apply bg-gradient-to-br from-card to-muted/50;
+    @apply border border-border/50 backdrop-blur-sm;
+    @apply transform hover:scale-105 transition-all duration-500 ease-out;
+    @apply hover:shadow-glow cursor-pointer;
+  }
+
+  .project-card::before {
+    @apply absolute inset-0 opacity-0 hover:opacity-100;
+    @apply bg-gradient-to-br from-primary/20 to-secondary/20;
+    @apply transition-opacity duration-300;
+    content: '';
+  }
+
+  /* Skill Progress Bar */
+  .skill-bar {
+    @apply w-full h-3 bg-muted rounded-full overflow-hidden;
+    @apply relative;
+  }
+
+  .skill-progress {
+    @apply h-full bg-gradient-to-r from-primary to-secondary;
+    @apply transition-all duration-1000 ease-out;
+    @apply relative overflow-hidden;
+  }
+
+  .skill-progress::before {
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent;
+    @apply animate-shimmer;
+    content: '';
+  }
+
+  /* Glass Card Effect */
+  .glass-card {
+    @apply backdrop-blur-md bg-card/80 border border-border/20;
+    @apply shadow-card rounded-3xl;
+  }
+
+  /* Animated Background Elements */
+  .floating-shape {
+    @apply absolute rounded-full animate-float;
+    @apply bg-gradient-to-br from-primary/20 to-secondary/20;
+    @apply blur-xl;
+  }
+}
