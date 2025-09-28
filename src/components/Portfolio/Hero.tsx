@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronDown, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import heroImage from "@/assets/hero-bg.jpg";
 
 interface HeroProps {
@@ -9,9 +9,23 @@ interface HeroProps {
     hero_image_url?: string;
     profile_image_url?: string;
   };
+  contact?: {
+    email?: string;
+    github_url?: string;
+    linkedin_url?: string;
+  } | null;
 }
 
-export const Hero = ({ data }: HeroProps) => {
+export const Hero = ({ data, contact }: HeroProps) => {
+  const normalizeUrl = (url?: string) => {
+    if (!url) return undefined;
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return `https://${url}`;
+  };
+
+  const githubUrl = normalizeUrl(contact?.github_url) || "https://github.com";
+  const linkedinUrl = normalizeUrl(contact?.linkedin_url) || "https://linkedin.com";
+  const emailHref = `mailto:${contact?.email || "savanthhemanth@gmail.com"}`;
   return (
     <section 
       id="home" 
@@ -106,24 +120,15 @@ export const Hero = ({ data }: HeroProps) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.2 }}
         >
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform">
+          <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform">
             <Github size={24} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform">
+          <a href={linkedinUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform">
             <Linkedin size={24} />
           </a>
-          <a href="mailto:savanthhemanth@gmail.com" className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform">
+          <a href={emailHref} className="text-muted-foreground hover:text-primary transition-colors duration-300 hover:scale-110 transform">
             <Mail size={24} />
           </a>
-        </motion.div>
-
-        <motion.div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.4 }}
-        >
-          <ChevronDown className="animate-bounce text-muted-foreground" size={32} />
         </motion.div>
       </div>
     </section>

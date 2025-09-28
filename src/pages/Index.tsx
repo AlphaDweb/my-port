@@ -54,7 +54,7 @@ const Index = () => {
       
       <Navigation websiteName={portfolioInfo?.website_name} />
       <main>
-        <Hero data={portfolioInfo} />
+        <Hero data={portfolioInfo} contact={contactInfo} />
         <About data={portfolioInfo} />
         <Projects data={projects} />
         <Skills data={skills} />
